@@ -3,12 +3,13 @@ const path = require("path");
 const morgan = require("morgan");
 const nunjucks = require("nunjucks");
 const cors = require("cors");
-app.use(cors());
 
 const { sequelize } = require("./models");
 const indexRouter = require("./routes/index");
 
 const app = express();
+
+app.use(cors());
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "html");
 nunjucks.configure("views", {
