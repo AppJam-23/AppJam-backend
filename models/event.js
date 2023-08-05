@@ -13,7 +13,7 @@ class Event extends Sequelize.Model {
           type: Sequelize.STRING(100),
         },
         Code: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING(100),
         },
       },
       {

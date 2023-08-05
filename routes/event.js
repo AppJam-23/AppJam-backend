@@ -1,14 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const Event = require("../models/people_info");
+const Event = require("../models/event");
 
 router.post("/create", async (req, res) => {
   const eventName = req.body.eventName;
   const code = req.body.code;
-  await Event.create({
-    EventName: eventName,
-    Code: code,
-  });
+  try {
+    await Event.create({
+      EventName: eventName,
+      Code: code,
+    });
+    res.status(200).end();
+  } catch {
+    res.status(401).end();
+  }
 });
 
 router.post("/login", async (req, res) => {
