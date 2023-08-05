@@ -28,4 +28,15 @@ router.get('/patient', async(req, res) => {
     res.send(data);
 });
 
+// 검색한 체온 전체 출력
+router.get('/temperature/:bodyheat', async(req, res) => {
+    bodyheat = req.params.bodyheat;
+    const data = await People_Info.findAll({
+        where: {
+            Temperature: bodyheat,
+        }
+    });
+    res.send(data);
+});
+
 module.exports = router;
