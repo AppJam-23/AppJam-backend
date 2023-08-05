@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
     Code: code,
   });
   if (data.length > 0) {
-    req.session.user = {
+    req.session.event = {
       eventName: data[0].EventName,
     };
     res.send("success");
@@ -25,5 +25,14 @@ router.post("/login", async (req, res) => {
     res.send("fail");
   }
 });
+
+router.get("/", (req, res) => {
+    if (req.session.event) {
+        const { eventName } = req.session.event;
+        res.send(eventName);
+      } else {
+        res.send("fail");
+      }
+})
 
 module.exports = router;
