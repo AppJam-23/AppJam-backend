@@ -8,4 +8,14 @@ router.get("/", async (req, res) => {
   res.send(data);
 });
 
+// 의심 질환자 출력
+router.get('/suspected', async(req, res) => {
+    const data = await People_Info.findAll({
+        where: {
+            Suspected: true,
+        }
+    });
+    res.send(data);
+});
+
 module.exports = router;
