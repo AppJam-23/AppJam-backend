@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const { sequelize } = require("./models");
 const indexRouter = require("./routes/index");
+const eventRouter = require("./routes/event");
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
+app.use("/event", eventRouter);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
